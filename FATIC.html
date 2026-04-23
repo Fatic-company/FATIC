@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="vi">
-<head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<!-- saved from url=(0048)https://fatic-company.github.io/FATIC/FATIC.html -->
+<html lang="vi"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>FATIC — Hệ thống Quản lý Nhân sự</title>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+<link href="./FATIC — Hệ thống Quản lý Nhân sự_files/css2" rel="stylesheet">
+<script src="./FATIC — Hệ thống Quản lý Nhân sự_files/xlsx.full.min.js.tải xuống"></script>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 :root{
@@ -374,7 +374,7 @@ select.fi{cursor:pointer}
 <!-- ═══════════════════════════════════════════════════
      MÀN HÌNH ĐĂNG NHẬP
 ════════════════════════════════════════════════════ -->
-<div id="login-screen">
+<div id="login-screen" class="login-out hidden">
   <div class="login-wrap">
 
     <!-- THƯƠNG HIỆU -->
@@ -399,11 +399,11 @@ select.fi{cursor:pointer}
 
         <div class="lz-field">
           <label class="lz-label">Tên đăng nhập</label>
-          <input class="lz-input" id="admin-user" type="text" placeholder="Nhập tên đăng nhập..." autocomplete="username" onkeydown="if(event.key==='Enter')doLogin()">
+          <input class="lz-input" id="admin-user" type="text" placeholder="Nhập tên đăng nhập..." autocomplete="username" onkeydown="if(event.key===&#39;Enter&#39;)doLogin()">
         </div>
         <div class="lz-field">
           <label class="lz-label">Mật khẩu</label>
-          <input class="lz-input" id="admin-pass" type="password" placeholder="Nhập mật khẩu..." autocomplete="current-password" onkeydown="if(event.key==='Enter')doLogin()">
+          <input class="lz-input" id="admin-pass" type="password" placeholder="Nhập mật khẩu..." autocomplete="current-password" onkeydown="if(event.key===&#39;Enter&#39;)doLogin()">
         </div>
 
         <button class="lz-btn" onclick="doLogin()">🔓 Đăng nhập hệ thống</button>
@@ -424,20 +424,20 @@ select.fi{cursor:pointer}
 
         <div class="lz-field">
           <label class="lz-label">Mã nhân viên</label>
-          <input class="lz-input" type="text" placeholder="VD: NV001..." disabled style="cursor:not-allowed;opacity:.5">
+          <input class="lz-input" type="text" placeholder="VD: NV001..." disabled="" style="cursor:not-allowed;opacity:.5">
         </div>
         <div class="lz-field">
           <label class="lz-label">Mật khẩu</label>
-          <input class="lz-input" type="password" placeholder="Chưa khả dụng..." disabled style="cursor:not-allowed;opacity:.5">
+          <input class="lz-input" type="password" placeholder="Chưa khả dụng..." disabled="" style="cursor:not-allowed;opacity:.5">
         </div>
 
-        <button class="lz-btn" disabled>🔒 Sắp ra mắt</button>
+        <button class="lz-btn" disabled="">🔒 Sắp ra mắt</button>
       </div>
 
     </div><!-- /.login-zones -->
 
     <div class="login-footer">
-      FATIC &copy; 2026 &nbsp;·&nbsp; Phiên bản dành cho nội bộ doanh nghiệp<br>
+      FATIC © 2026 &nbsp;·&nbsp; Phiên bản dành cho nội bộ doanh nghiệp<br>
       Liên hệ IT nếu quên mật khẩu hoặc gặp sự cố đăng nhập
     </div>
 
@@ -450,48 +450,48 @@ select.fi{cursor:pointer}
   <div class="sb">
     <div class="sb-brand">
       <div class="sb-logo">
-        <div class="sb-mark" style="font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:800;letter-spacing:-1px">FA</div>
+        <div class="sb-mark" style="font-family:&#39;JetBrains Mono&#39;,monospace;font-size:13px;font-weight:800;letter-spacing:-1px">FA</div>
         <div>
           <div class="sb-name">FATIC</div>
           <div class="sb-ver">HỆ THỐNG NHÂN SỰ</div>
         </div>
       </div>
       <div class="mod-sw">
-        <button class="mod-tab on" onclick="switchModule('hr')">👥 Nhân sự</button>
-        <button class="mod-tab acc-t" onclick="switchModule('acc')">💰 Kế toán</button>
+        <button class="mod-tab on" onclick="switchModule(&#39;hr&#39;)">👥 Nhân sự</button>
+        <button class="mod-tab acc-t" onclick="switchModule(&#39;acc&#39;)">💰 Kế toán</button>
       </div>
     </div>
     
     <!-- HR Menu -->
     <div id="hr-menu" style="display:block">
       <div class="sb-sec">Quản lý nhân viên</div>
-      <button class="ni on" onclick="showPage('employees')"><span class="ni-ico">👤</span>Danh sách NV<span class="ni-cnt" id="emp-count">0</span></button>
-      <button class="ni" onclick="showPage('contracts')"><span class="ni-ico">📄</span>Hợp đồng</button>
-      <button class="ni" onclick="showPage('history')"><span class="ni-ico">📈</span>Lịch sử công tác</button>
-      <button class="ni" onclick="showPage('performance')"><span class="ni-ico">⭐</span>Đánh giá hiệu suất</button>
-      <button class="ni" onclick="showPage('rewards')"><span class="ni-ico">🏆</span>Khen thưởng/KL</button>
-      <button class="ni" onclick="showPage('training')"><span class="ni-ico">📚</span>Đào tạo</button>
+      <button class="ni on" onclick="showPage(&#39;employees&#39;)"><span class="ni-ico">👤</span>Danh sách NV<span class="ni-cnt" id="emp-count">12</span></button>
+      <button class="ni" onclick="showPage(&#39;contracts&#39;)"><span class="ni-ico">📄</span>Hợp đồng</button>
+      <button class="ni" onclick="showPage(&#39;history&#39;)"><span class="ni-ico">📈</span>Lịch sử công tác</button>
+      <button class="ni" onclick="showPage(&#39;performance&#39;)"><span class="ni-ico">⭐</span>Đánh giá hiệu suất</button>
+      <button class="ni" onclick="showPage(&#39;rewards&#39;)"><span class="ni-ico">🏆</span>Khen thưởng/KL</button>
+      <button class="ni" onclick="showPage(&#39;training&#39;)"><span class="ni-ico">📚</span>Đào tạo</button>
       
-      <div class="sb-sec">Chấm công & Lương</div>
-      <button class="ni" onclick="showPage('attendance')"><span class="ni-ico">📅</span>Chấm công</button>
-      <button class="ni" onclick="showPage('salary')"><span class="ni-ico">💵</span>Bảng lương</button>
-      <button class="ni" onclick="showPage('insurance')"><span class="ni-ico">🛡️</span>Bảo hiểm</button>
+      <div class="sb-sec">Chấm công &amp; Lương</div>
+      <button class="ni" onclick="showPage(&#39;attendance&#39;)"><span class="ni-ico">📅</span>Chấm công</button>
+      <button class="ni" onclick="showPage(&#39;salary&#39;)"><span class="ni-ico">💵</span>Bảng lương</button>
+      <button class="ni" onclick="showPage(&#39;insurance&#39;)"><span class="ni-ico">🛡️</span>Bảo hiểm</button>
       
       <div class="sb-sec">Báo cáo</div>
-      <button class="ni" onclick="showPage('summary')"><span class="ni-ico">📊</span>Tổng quan</button>
+      <button class="ni" onclick="showPage(&#39;summary&#39;)"><span class="ni-ico">📊</span>Tổng quan</button>
     </div>
     
     <!-- ACCOUNTING Menu -->
     <div id="acc-menu" style="display:none">
       <div class="sb-sec">Quản lý tài chính</div>
-      <button class="ni acc-ni" onclick="showPage('cashflow')"><span class="ni-ico">💸</span>Thu chi</button>
-      <button class="ni acc-ni" onclick="showPage('invoices')"><span class="ni-ico">📋</span>Hóa đơn/Chứng từ</button>
-      <button class="ni acc-ni" onclick="showPage('debts')"><span class="ni-ico">💳</span>Công nợ</button>
-      <button class="ni acc-ni" onclick="showPage('budget')"><span class="ni-ico">🎯</span>Ngân sách</button>
+      <button class="ni acc-ni" onclick="showPage(&#39;cashflow&#39;)"><span class="ni-ico">💸</span>Thu chi</button>
+      <button class="ni acc-ni" onclick="showPage(&#39;invoices&#39;)"><span class="ni-ico">📋</span>Hóa đơn/Chứng từ</button>
+      <button class="ni acc-ni" onclick="showPage(&#39;debts&#39;)"><span class="ni-ico">💳</span>Công nợ</button>
+      <button class="ni acc-ni" onclick="showPage(&#39;budget&#39;)"><span class="ni-ico">🎯</span>Ngân sách</button>
       
       <div class="sb-sec">Báo cáo tài chính</div>
-      <button class="ni acc-ni" onclick="showPage('financial-report')"><span class="ni-ico">📈</span>Báo cáo tài chính</button>
-      <button class="ni acc-ni" onclick="showPage('tax')"><span class="ni-ico">📑</span>Thuế TNCN</button>
+      <button class="ni acc-ni" onclick="showPage(&#39;financial-report&#39;)"><span class="ni-ico">📈</span>Báo cáo tài chính</button>
+      <button class="ni acc-ni" onclick="showPage(&#39;tax&#39;)"><span class="ni-ico">📑</span>Thuế TNCN</button>
     </div>
     
     <div class="sb-foot">
@@ -510,12 +510,12 @@ select.fi{cursor:pointer}
         <div class="tb-sub" id="page-subtitle">Quản lý thông tin nhân viên</div>
       </div>
       <div class="tb-space"></div>
-      <div class="tb-chip" id="autosave-chip" style="display:none;background:var(--green-bg);border-color:var(--green-mid);color:var(--green)">💾 Đã lưu tự động</div>
-      <div class="tb-chip">📅 <span id="current-date"></span></div>
+      <div class="tb-chip" id="autosave-chip" style="display: flex; background: var(--orange-bg); border-color: var(--orange-mid); color: var(--orange);">⚠️ Offline - dùng dữ liệu local</div>
+      <div class="tb-chip">📅 <span id="current-date">Th 5, 23/4/2026</span></div>
       <span class="tb-badge hr" id="module-badge">Nhân sự</span>
       <div class="tb-chip" style="background:var(--surface2);border-color:var(--border);gap:7px;padding:5px 7px 5px 12px">
         <span style="font-size:11.5px;color:var(--text2);font-weight:700">👑 Admin</span>
-        <button onclick="doLogout()" title="Đăng xuất" style="width:28px;height:28px;border-radius:7px;border:1px solid var(--border);background:var(--surface);display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:13px;color:var(--text2);transition:all .15s" onmouseover="this.style.background='var(--red-bg)';this.style.color='var(--red)';this.style.borderColor='var(--red-mid)'" onmouseout="this.style.background='var(--surface)';this.style.color='var(--text2)';this.style.borderColor='var(--border)'">⏻</button>
+        <button onclick="doLogout()" title="Đăng xuất" style="width:28px;height:28px;border-radius:7px;border:1px solid var(--border);background:var(--surface);display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:13px;color:var(--text2);transition:all .15s" onmouseover="this.style.background=&#39;var(--red-bg)&#39;;this.style.color=&#39;var(--red)&#39;;this.style.borderColor=&#39;var(--red-mid)&#39;" onmouseout="this.style.background=&#39;var(--surface)&#39;;this.style.color=&#39;var(--text2)&#39;;this.style.borderColor=&#39;var(--border)&#39;">⏻</button>
       </div>
     </div>
 
@@ -524,14 +524,14 @@ select.fi{cursor:pointer}
       <div id="employees" class="page on">
         <!-- STAT CARDS -->
         <div class="g4" id="emp-stats">
-          <div class="sc b"><div class="sc-ico">👥</div><div class="sc-n">0</div><div class="sc-l">Tổng NV</div></div>
-          <div class="sc g"><div class="sc-ico">✅</div><div class="sc-n">0</div><div class="sc-l">Đang làm</div></div>
-          <div class="sc p"><div class="sc-ico">⏳</div><div class="sc-n">0</div><div class="sc-l">Thử việc</div></div>
-          <div class="sc o"><div class="sc-ico">💰</div><div class="sc-n">0đ</div><div class="sc-l">Lương TB</div></div>
-        </div>
+    <div class="sc b"><div class="sc-ico">👥</div><div class="sc-n">12</div><div class="sc-l">Tổng NV</div><div class="sc-s">0 đã nghỉ</div></div>
+    <div class="sc g"><div class="sc-ico">✅</div><div class="sc-n">11</div><div class="sc-l">Đang làm</div></div>
+    <div class="sc p"><div class="sc-ico">⏳</div><div class="sc-n">1</div><div class="sc-l">Thử việc</div></div>
+    <div class="sc o"><div class="sc-ico">💰</div><div class="sc-n">18.9tr</div><div class="sc-l">Lương TB</div><div class="sc-s">Quỹ lương: 226.5tr</div></div>
+  </div>
 
         <!-- ALERT BANNERS -->
-        <div id="emp-alerts" class="alert-row"></div>
+        <div id="emp-alerts" class="alert-row"><div class="alert-pill bd" onclick="filterBy(&#39;birthday&#39;)">🎂 1 sinh nhật tháng này</div></div>
 
         <div style="display:grid;grid-template-columns:1fr 320px;gap:16px;align-items:start">
           <!-- MAIN TABLE CARD -->
@@ -574,10 +574,410 @@ select.fi{cursor:pointer}
                     <th style="text-align:right">Thao tác</th>
                   </tr>
                 </thead>
-                <tbody id="emp-tbody"></tbody>
+                <tbody id="emp-tbody">
+    <tr>
+      <td>
+        <div class="emp-av-wrap">
+          <div class="emp-av" style="background:#6B27D9">NM</div>
+          <div>
+            <div style="font-weight:800;font-size:13px">Nguyễn Văn Minh</div>
+            <div style="font-size:11px;color:var(--text3)">NV001</div>
+          </div>
+        </div>
+      </td>
+      <td>
+        <div style="font-size:12.5px">minh.nv@fatic.vn</div>
+        <div style="font-size:11.5px;color:var(--text3)">901234567</div>
+      </td>
+      <td>
+        <div><span class="badge blue">Kỹ thuật</span></div>
+        <div style="font-size:11.5px;color:var(--text2);margin-top:3px">Trưởng phòng</div>
+      </td>
+      <td><span class="sen-badge">7 năm 1 th</span></td>
+      <td>
+        <div style="font-weight:800;color:var(--blue)">28.000.000&nbsp;₫</div>
+        <div style="font-size:11px;color:var(--text3)">PC: 4.0tr</div>
+      </td>
+      <td><span class="badge green">Đang làm</span></td>
+      <td style="text-align:right;white-space:nowrap">
+        <button class="ib vi" onclick="openProfile(0)" title="Xem hồ sơ">👁️</button>
+        <button class="ib ed" onclick="editEmp(0)" title="Chỉnh sửa">✏️</button>
+        <div class="qa-btn" style="display:inline-block">
+          <button class="ib" onclick="toggleQA(event,0)" title="Thao tác khác">⋮</button>
+          <div class="qa-menu" id="qa-0">
+            <button class="qa-item green" onclick="closeAllQA();openStatusModal(0)">🔄 Đổi trạng thái</button>
+            <button class="qa-item blue" onclick="closeAllQA();quickAddHistory(0)">📈 Thêm LS công tác</button>
+            <button class="qa-item blue" onclick="closeAllQA();quickAddPerf(0)">⭐ Đánh giá KPI</button>
+            <hr style="margin:4px 0;border:none;border-top:1px solid var(--border)">
+            <button class="qa-item red" onclick="closeAllQA();delEmp(0)">🗑️ Xóa nhân viên</button>
+          </div>
+        </div>
+      </td>
+    </tr>
+  
+    <tr>
+      <td>
+        <div class="emp-av-wrap">
+          <div class="emp-av" style="background:#0F766E">TL</div>
+          <div>
+            <div style="font-weight:800;font-size:13px">Trần Thị Lan</div>
+            <div style="font-size:11px;color:var(--text3)">NV002</div>
+          </div>
+        </div>
+      </td>
+      <td>
+        <div style="font-size:12.5px">lan.tt@fatic.vn</div>
+        <div style="font-size:11.5px;color:var(--text3)">912345678</div>
+      </td>
+      <td>
+        <div><span class="badge green">Kinh doanh</span></div>
+        <div style="font-size:11.5px;color:var(--text2);margin-top:3px">Trưởng phòng</div>
+      </td>
+      <td><span class="sen-badge">6 năm 10 th</span></td>
+      <td>
+        <div style="font-weight:800;color:var(--blue)">25.000.000&nbsp;₫</div>
+        <div style="font-size:11px;color:var(--text3)">PC: 3.5tr</div>
+      </td>
+      <td><span class="badge green">Đang làm</span></td>
+      <td style="text-align:right;white-space:nowrap">
+        <button class="ib vi" onclick="openProfile(1)" title="Xem hồ sơ">👁️</button>
+        <button class="ib ed" onclick="editEmp(1)" title="Chỉnh sửa">✏️</button>
+        <div class="qa-btn" style="display:inline-block">
+          <button class="ib" onclick="toggleQA(event,1)" title="Thao tác khác">⋮</button>
+          <div class="qa-menu" id="qa-1">
+            <button class="qa-item green" onclick="closeAllQA();openStatusModal(1)">🔄 Đổi trạng thái</button>
+            <button class="qa-item blue" onclick="closeAllQA();quickAddHistory(1)">📈 Thêm LS công tác</button>
+            <button class="qa-item blue" onclick="closeAllQA();quickAddPerf(1)">⭐ Đánh giá KPI</button>
+            <hr style="margin:4px 0;border:none;border-top:1px solid var(--border)">
+            <button class="qa-item red" onclick="closeAllQA();delEmp(1)">🗑️ Xóa nhân viên</button>
+          </div>
+        </div>
+      </td>
+    </tr>
+  
+    <tr>
+      <td>
+        <div class="emp-av-wrap">
+          <div class="emp-av" style="background:#D95E10">LH</div>
+          <div>
+            <div style="font-weight:800;font-size:13px">Lê Quang Hùng</div>
+            <div style="font-size:11px;color:var(--text3)">NV003</div>
+          </div>
+        </div>
+      </td>
+      <td>
+        <div style="font-size:12.5px">hung.lq@fatic.vn</div>
+        <div style="font-size:11.5px;color:var(--text3)">923456789</div>
+      </td>
+      <td>
+        <div><span class="badge blue">Kỹ thuật</span></div>
+        <div style="font-size:11.5px;color:var(--text2);margin-top:3px">Lập trình viên</div>
+      </td>
+      <td><span class="sen-badge">5 năm 7 th</span></td>
+      <td>
+        <div style="font-weight:800;color:var(--blue)">20.000.000&nbsp;₫</div>
+        <div style="font-size:11px;color:var(--text3)">PC: 2.5tr</div>
+      </td>
+      <td><span class="badge green">Đang làm</span></td>
+      <td style="text-align:right;white-space:nowrap">
+        <button class="ib vi" onclick="openProfile(2)" title="Xem hồ sơ">👁️</button>
+        <button class="ib ed" onclick="editEmp(2)" title="Chỉnh sửa">✏️</button>
+        <div class="qa-btn" style="display:inline-block">
+          <button class="ib" onclick="toggleQA(event,2)" title="Thao tác khác">⋮</button>
+          <div class="qa-menu" id="qa-2">
+            <button class="qa-item green" onclick="closeAllQA();openStatusModal(2)">🔄 Đổi trạng thái</button>
+            <button class="qa-item blue" onclick="closeAllQA();quickAddHistory(2)">📈 Thêm LS công tác</button>
+            <button class="qa-item blue" onclick="closeAllQA();quickAddPerf(2)">⭐ Đánh giá KPI</button>
+            <hr style="margin:4px 0;border:none;border-top:1px solid var(--border)">
+            <button class="qa-item red" onclick="closeAllQA();delEmp(2)">🗑️ Xóa nhân viên</button>
+          </div>
+        </div>
+      </td>
+    </tr>
+  
+    <tr>
+      <td>
+        <div class="emp-av-wrap">
+          <div class="emp-av" style="background:#0E9E52">PH</div>
+          <div>
+            <div style="font-weight:800;font-size:13px">Phạm Thị Hoa</div>
+            <div style="font-size:11px;color:var(--text3)">NV004</div>
+          </div>
+        </div>
+      </td>
+      <td>
+        <div style="font-size:12.5px">hoa.pt@fatic.vn</div>
+        <div style="font-size:11.5px;color:var(--text3)">934567890</div>
+      </td>
+      <td>
+        <div><span class="badge teal">Kế toán</span></div>
+        <div style="font-size:11.5px;color:var(--text2);margin-top:3px">Kế toán trưởng</div>
+      </td>
+      <td><span class="sen-badge">8 năm 3 th</span></td>
+      <td>
+        <div style="font-weight:800;color:var(--blue)">22.000.000&nbsp;₫</div>
+        <div style="font-size:11px;color:var(--text3)">PC: 3.0tr</div>
+      </td>
+      <td><span class="badge green">Đang làm</span></td>
+      <td style="text-align:right;white-space:nowrap">
+        <button class="ib vi" onclick="openProfile(3)" title="Xem hồ sơ">👁️</button>
+        <button class="ib ed" onclick="editEmp(3)" title="Chỉnh sửa">✏️</button>
+        <div class="qa-btn" style="display:inline-block">
+          <button class="ib" onclick="toggleQA(event,3)" title="Thao tác khác">⋮</button>
+          <div class="qa-menu" id="qa-3">
+            <button class="qa-item green" onclick="closeAllQA();openStatusModal(3)">🔄 Đổi trạng thái</button>
+            <button class="qa-item blue" onclick="closeAllQA();quickAddHistory(3)">📈 Thêm LS công tác</button>
+            <button class="qa-item blue" onclick="closeAllQA();quickAddPerf(3)">⭐ Đánh giá KPI</button>
+            <hr style="margin:4px 0;border:none;border-top:1px solid var(--border)">
+            <button class="qa-item red" onclick="closeAllQA();delEmp(3)">🗑️ Xóa nhân viên</button>
+          </div>
+        </div>
+      </td>
+    </tr>
+  
+    <tr>
+      <td>
+        <div class="emp-av-wrap">
+          <div class="emp-av" style="background:#0E9E52">VT</div>
+          <div>
+            <div style="font-weight:800;font-size:13px">Vũ Đức Thành</div>
+            <div style="font-size:11px;color:var(--text3)">NV005</div>
+          </div>
+        </div>
+      </td>
+      <td>
+        <div style="font-size:12.5px">thanh.vd@fatic.vn</div>
+        <div style="font-size:11.5px;color:var(--text3)">945678901</div>
+      </td>
+      <td>
+        <div><span class="badge purple">Marketing</span></div>
+        <div style="font-size:11.5px;color:var(--text2);margin-top:3px">Nhân viên MKT</div>
+      </td>
+      <td><span class="sen-badge">5 năm</span></td>
+      <td>
+        <div style="font-weight:800;color:var(--blue)">16.000.000&nbsp;₫</div>
+        <div style="font-size:11px;color:var(--text3)">PC: 2.0tr</div>
+      </td>
+      <td><span class="badge green">Đang làm</span></td>
+      <td style="text-align:right;white-space:nowrap">
+        <button class="ib vi" onclick="openProfile(4)" title="Xem hồ sơ">👁️</button>
+        <button class="ib ed" onclick="editEmp(4)" title="Chỉnh sửa">✏️</button>
+        <div class="qa-btn" style="display:inline-block">
+          <button class="ib" onclick="toggleQA(event,4)" title="Thao tác khác">⋮</button>
+          <div class="qa-menu" id="qa-4">
+            <button class="qa-item green" onclick="closeAllQA();openStatusModal(4)">🔄 Đổi trạng thái</button>
+            <button class="qa-item blue" onclick="closeAllQA();quickAddHistory(4)">📈 Thêm LS công tác</button>
+            <button class="qa-item blue" onclick="closeAllQA();quickAddPerf(4)">⭐ Đánh giá KPI</button>
+            <hr style="margin:4px 0;border:none;border-top:1px solid var(--border)">
+            <button class="qa-item red" onclick="closeAllQA();delEmp(4)">🗑️ Xóa nhân viên</button>
+          </div>
+        </div>
+      </td>
+    </tr>
+  
+    <tr>
+      <td>
+        <div class="emp-av-wrap">
+          <div class="emp-av" style="background:#0F766E">NM</div>
+          <div>
+            <div style="font-weight:800;font-size:13px">Ngô Thị Mai</div>
+            <div style="font-size:11px;color:var(--text3)">NV006</div>
+          </div>
+        </div>
+      </td>
+      <td>
+        <div style="font-size:12.5px">mai.nt@fatic.vn</div>
+        <div style="font-size:11.5px;color:var(--text3)">956789012</div>
+      </td>
+      <td>
+        <div><span class="badge orange">Nhân sự</span></div>
+        <div style="font-size:11.5px;color:var(--text2);margin-top:3px">Chuyên viên NS</div>
+      </td>
+      <td><span class="sen-badge">4 năm 8 th</span></td>
+      <td>
+        <div style="font-weight:800;color:var(--blue)">17.000.000&nbsp;₫</div>
+        <div style="font-size:11px;color:var(--text3)">PC: 2.0tr</div>
+      </td>
+      <td><span class="badge green">Đang làm</span></td>
+      <td style="text-align:right;white-space:nowrap">
+        <button class="ib vi" onclick="openProfile(5)" title="Xem hồ sơ">👁️</button>
+        <button class="ib ed" onclick="editEmp(5)" title="Chỉnh sửa">✏️</button>
+        <div class="qa-btn" style="display:inline-block">
+          <button class="ib" onclick="toggleQA(event,5)" title="Thao tác khác">⋮</button>
+          <div class="qa-menu" id="qa-5">
+            <button class="qa-item green" onclick="closeAllQA();openStatusModal(5)">🔄 Đổi trạng thái</button>
+            <button class="qa-item blue" onclick="closeAllQA();quickAddHistory(5)">📈 Thêm LS công tác</button>
+            <button class="qa-item blue" onclick="closeAllQA();quickAddPerf(5)">⭐ Đánh giá KPI</button>
+            <hr style="margin:4px 0;border:none;border-top:1px solid var(--border)">
+            <button class="qa-item red" onclick="closeAllQA();delEmp(5)">🗑️ Xóa nhân viên</button>
+          </div>
+        </div>
+      </td>
+    </tr>
+  
+    <tr>
+      <td>
+        <div class="emp-av-wrap">
+          <div class="emp-av" style="background:#0F766E">ĐT</div>
+          <div>
+            <div style="font-weight:800;font-size:13px">Đặng Văn Tuấn</div>
+            <div style="font-size:11px;color:var(--text3)">NV007</div>
+          </div>
+        </div>
+      </td>
+      <td>
+        <div style="font-size:12.5px">tuan.dv@fatic.vn</div>
+        <div style="font-size:11.5px;color:var(--text3)">967890123</div>
+      </td>
+      <td>
+        <div><span class="badge blue">Kỹ thuật</span></div>
+        <div style="font-size:11.5px;color:var(--text2);margin-top:3px">Kỹ sư DevOps</div>
+      </td>
+      <td><span class="sen-badge">6 năm 2 th</span></td>
+      <td>
+        <div style="font-weight:800;color:var(--blue)">23.000.000&nbsp;₫</div>
+        <div style="font-size:11px;color:var(--text3)">PC: 3.0tr</div>
+      </td>
+      <td><span class="badge green">Đang làm</span></td>
+      <td style="text-align:right;white-space:nowrap">
+        <button class="ib vi" onclick="openProfile(6)" title="Xem hồ sơ">👁️</button>
+        <button class="ib ed" onclick="editEmp(6)" title="Chỉnh sửa">✏️</button>
+        <div class="qa-btn" style="display:inline-block">
+          <button class="ib" onclick="toggleQA(event,6)" title="Thao tác khác">⋮</button>
+          <div class="qa-menu" id="qa-6">
+            <button class="qa-item green" onclick="closeAllQA();openStatusModal(6)">🔄 Đổi trạng thái</button>
+            <button class="qa-item blue" onclick="closeAllQA();quickAddHistory(6)">📈 Thêm LS công tác</button>
+            <button class="qa-item blue" onclick="closeAllQA();quickAddPerf(6)">⭐ Đánh giá KPI</button>
+            <hr style="margin:4px 0;border:none;border-top:1px solid var(--border)">
+            <button class="qa-item red" onclick="closeAllQA();delEmp(6)">🗑️ Xóa nhân viên</button>
+          </div>
+        </div>
+      </td>
+    </tr>
+  
+    <tr>
+      <td>
+        <div class="emp-av-wrap">
+          <div class="emp-av" style="background:#D95E10">BT</div>
+          <div>
+            <div style="font-weight:800;font-size:13px">Bùi Thị Tuyết</div>
+            <div style="font-size:11px;color:var(--text3)">NV008</div>
+          </div>
+        </div>
+      </td>
+      <td>
+        <div style="font-size:12.5px">tuyet.bt@fatic.vn</div>
+        <div style="font-size:11.5px;color:var(--text3)">978901234</div>
+      </td>
+      <td>
+        <div><span class="badge green">Kinh doanh</span></div>
+        <div style="font-size:11.5px;color:var(--text2);margin-top:3px">Nhân viên KD</div>
+      </td>
+      <td><span class="sen-badge">4 năm 3 th</span></td>
+      <td>
+        <div style="font-weight:800;color:var(--blue)">15.000.000&nbsp;₫</div>
+        <div style="font-size:11px;color:var(--text3)">PC: 2.5tr</div>
+      </td>
+      <td><span class="badge green">Đang làm</span></td>
+      <td style="text-align:right;white-space:nowrap">
+        <button class="ib vi" onclick="openProfile(7)" title="Xem hồ sơ">👁️</button>
+        <button class="ib ed" onclick="editEmp(7)" title="Chỉnh sửa">✏️</button>
+        <div class="qa-btn" style="display:inline-block">
+          <button class="ib" onclick="toggleQA(event,7)" title="Thao tác khác">⋮</button>
+          <div class="qa-menu" id="qa-7">
+            <button class="qa-item green" onclick="closeAllQA();openStatusModal(7)">🔄 Đổi trạng thái</button>
+            <button class="qa-item blue" onclick="closeAllQA();quickAddHistory(7)">📈 Thêm LS công tác</button>
+            <button class="qa-item blue" onclick="closeAllQA();quickAddPerf(7)">⭐ Đánh giá KPI</button>
+            <hr style="margin:4px 0;border:none;border-top:1px solid var(--border)">
+            <button class="qa-item red" onclick="closeAllQA();delEmp(7)">🗑️ Xóa nhân viên</button>
+          </div>
+        </div>
+      </td>
+    </tr>
+  
+    <tr>
+      <td>
+        <div class="emp-av-wrap">
+          <div class="emp-av" style="background:#C4197A">HK</div>
+          <div>
+            <div style="font-weight:800;font-size:13px">Hoàng Minh Khoa</div>
+            <div style="font-size:11px;color:var(--text3)">NV009</div>
+          </div>
+        </div>
+      </td>
+      <td>
+        <div style="font-size:12.5px">khoa.hm@fatic.vn</div>
+        <div style="font-size:11.5px;color:var(--text3)">989012345</div>
+      </td>
+      <td>
+        <div><span class="badge blue">Kỹ thuật</span></div>
+        <div style="font-size:11.5px;color:var(--text2);margin-top:3px">Lập trình viên</div>
+      </td>
+      <td><span class="sen-badge">4 tháng</span></td>
+      <td>
+        <div style="font-weight:800;color:var(--blue)">14.000.000&nbsp;₫</div>
+        <div style="font-size:11px;color:var(--text3)">PC: 1.5tr</div>
+      </td>
+      <td><span class="badge orange">Thử việc</span></td>
+      <td style="text-align:right;white-space:nowrap">
+        <button class="ib vi" onclick="openProfile(8)" title="Xem hồ sơ">👁️</button>
+        <button class="ib ed" onclick="editEmp(8)" title="Chỉnh sửa">✏️</button>
+        <div class="qa-btn" style="display:inline-block">
+          <button class="ib" onclick="toggleQA(event,8)" title="Thao tác khác">⋮</button>
+          <div class="qa-menu" id="qa-8">
+            <button class="qa-item green" onclick="closeAllQA();openStatusModal(8)">🔄 Đổi trạng thái</button>
+            <button class="qa-item blue" onclick="closeAllQA();quickAddHistory(8)">📈 Thêm LS công tác</button>
+            <button class="qa-item blue" onclick="closeAllQA();quickAddPerf(8)">⭐ Đánh giá KPI</button>
+            <hr style="margin:4px 0;border:none;border-top:1px solid var(--border)">
+            <button class="qa-item red" onclick="closeAllQA();delEmp(8)">🗑️ Xóa nhân viên</button>
+          </div>
+        </div>
+      </td>
+    </tr>
+  
+    <tr>
+      <td>
+        <div class="emp-av-wrap">
+          <div class="emp-av" style="background:#0784A8">TH</div>
+          <div>
+            <div style="font-weight:800;font-size:13px">Trịnh Thu Hằng</div>
+            <div style="font-size:11px;color:var(--text3)">NV010</div>
+          </div>
+        </div>
+      </td>
+      <td>
+        <div style="font-size:12.5px">hang.tt@fatic.vn</div>
+        <div style="font-size:11.5px;color:var(--text3)">990123456</div>
+      </td>
+      <td>
+        <div><span class="badge pink">Hành chính</span></div>
+        <div style="font-size:11.5px;color:var(--text2);margin-top:3px">Hành chính tổng hợp</div>
+      </td>
+      <td><span class="sen-badge">3 năm 10 th</span></td>
+      <td>
+        <div style="font-weight:800;color:var(--blue)">13.000.000&nbsp;₫</div>
+        <div style="font-size:11px;color:var(--text3)">PC: 1.5tr</div>
+      </td>
+      <td><span class="badge green">Đang làm</span></td>
+      <td style="text-align:right;white-space:nowrap">
+        <button class="ib vi" onclick="openProfile(9)" title="Xem hồ sơ">👁️</button>
+        <button class="ib ed" onclick="editEmp(9)" title="Chỉnh sửa">✏️</button>
+        <div class="qa-btn" style="display:inline-block">
+          <button class="ib" onclick="toggleQA(event,9)" title="Thao tác khác">⋮</button>
+          <div class="qa-menu" id="qa-9">
+            <button class="qa-item green" onclick="closeAllQA();openStatusModal(9)">🔄 Đổi trạng thái</button>
+            <button class="qa-item blue" onclick="closeAllQA();quickAddHistory(9)">📈 Thêm LS công tác</button>
+            <button class="qa-item blue" onclick="closeAllQA();quickAddPerf(9)">⭐ Đánh giá KPI</button>
+            <hr style="margin:4px 0;border:none;border-top:1px solid var(--border)">
+            <button class="qa-item red" onclick="closeAllQA();delEmp(9)">🗑️ Xóa nhân viên</button>
+          </div>
+        </div>
+      </td>
+    </tr>
+  </tbody>
               </table>
             </div>
-            <div id="emp-pagination" style="padding:12px 20px;border-top:1px solid var(--border);display:flex;align-items:center;gap:8px;font-size:12px;color:var(--text2)"></div>
+            <div id="emp-pagination" style="padding:12px 20px;border-top:1px solid var(--border);display:flex;align-items:center;gap:8px;font-size:12px;color:var(--text2)"><span style="flex:1">Hiển thị 1–10 / 12 nhân viên</span><button class="btn btn-ghost btn-xs" onclick="gotoEmpPage(-1)" disabled="">‹ Trước</button><button class="btn btn-xs btn-p" onclick="gotoEmpPage(0)">1</button><button class="btn btn-xs btn-ghost" onclick="gotoEmpPage(1)">2</button><button class="btn btn-ghost btn-xs" onclick="gotoEmpPage(1)">Sau ›</button></div>
           </div>
 
           <!-- RIGHT PANEL -->
@@ -585,12 +985,50 @@ select.fi{cursor:pointer}
             <!-- DEPT BREAKDOWN -->
             <div class="card" style="margin-bottom:16px">
               <div class="ch"><span class="ct"><span class="ct-ico" style="background:var(--blue-bg)">🏢</span>Cơ cấu phòng ban</span></div>
-              <div class="cb" id="dept-breakdown"></div>
+              <div class="cb" id="dept-breakdown"><div class="dept-bar-row">
+      <div class="dept-bar-label">Kỹ thuật</div>
+      <div class="dept-bar-wrap"><div class="dept-bar-fill" style="width:100%;background:var(--blue)"></div></div>
+      <div class="dept-bar-count">4</div>
+    </div><div class="dept-bar-row">
+      <div class="dept-bar-label">Kinh doanh</div>
+      <div class="dept-bar-wrap"><div class="dept-bar-fill" style="width:75%;background:var(--green)"></div></div>
+      <div class="dept-bar-count">3</div>
+    </div><div class="dept-bar-row">
+      <div class="dept-bar-label">Marketing</div>
+      <div class="dept-bar-wrap"><div class="dept-bar-fill" style="width:25%;background:var(--purple)"></div></div>
+      <div class="dept-bar-count">1</div>
+    </div><div class="dept-bar-row">
+      <div class="dept-bar-label">Nhân sự</div>
+      <div class="dept-bar-wrap"><div class="dept-bar-fill" style="width:25%;background:var(--orange)"></div></div>
+      <div class="dept-bar-count">1</div>
+    </div><div class="dept-bar-row">
+      <div class="dept-bar-label">Kế toán</div>
+      <div class="dept-bar-wrap"><div class="dept-bar-fill" style="width:50%;background:var(--teal)"></div></div>
+      <div class="dept-bar-count">2</div>
+    </div><div class="dept-bar-row">
+      <div class="dept-bar-label">Hành chính</div>
+      <div class="dept-bar-wrap"><div class="dept-bar-fill" style="width:25%;background:var(--pink)"></div></div>
+      <div class="dept-bar-count">1</div>
+    </div></div>
             </div>
             <!-- UPCOMING EVENTS -->
             <div class="card">
               <div class="ch"><span class="ct"><span class="ct-ico" style="background:var(--pink-bg)">🔔</span>Sự kiện sắp tới</span></div>
-              <div class="cb" id="upcoming-events" style="padding:14px 16px"></div>
+              <div class="cb" id="upcoming-events" style="padding:14px 16px">
+    <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px">
+      <div style="width:32px;height:32px;border-radius:10px;background:var(--surface2);display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0">🎂</div>
+      <div style="min-width:0">
+        <div style="font-size:12.5px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">Đặng Văn Tuấn</div>
+        <div style="font-size:11px;color:var(--pink);font-weight:600">Sinh nhật – còn 2 ngày</div>
+      </div>
+    </div>
+    <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px">
+      <div style="width:32px;height:32px;border-radius:10px;background:var(--surface2);display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0">🎂</div>
+      <div style="min-width:0">
+        <div style="font-size:12.5px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">Phạm Thị Hoa</div>
+        <div style="font-size:11px;color:var(--pink);font-weight:600">Sinh nhật – còn 15 ngày</div>
+      </div>
+    </div></div>
             </div>
           </div>
         </div>
@@ -628,7 +1066,7 @@ select.fi{cursor:pointer}
       <div id="history" class="page">
         <div class="card">
           <div class="ch">
-            <span class="ct"><span class="ct-ico" style="background:var(--teal-bg)">📈</span>Lịch sử công tác & Thăng tiến</span>
+            <span class="ct"><span class="ct-ico" style="background:var(--teal-bg)">📈</span>Lịch sử công tác &amp; Thăng tiến</span>
             <button class="btn btn-p" onclick="openAddHistory()">➕ Thêm lịch sử</button>
             <button class="btn btn-ghost" onclick="exportHistoryXLSX()">📥 Xuất Excel</button>
           </div>
@@ -681,8 +1119,8 @@ select.fi{cursor:pointer}
       <!-- REWARDS PAGE -->
       <div id="rewards" class="page">
         <div class="tabs">
-          <div class="tab on" onclick="showRewardTab('reward')">🏆 Khen thưởng</div>
-          <div class="tab" onclick="showRewardTab('discipline')">⚠️ Kỷ luật</div>
+          <div class="tab on" onclick="showRewardTab(&#39;reward&#39;)">🏆 Khen thưởng</div>
+          <div class="tab" onclick="showRewardTab(&#39;discipline&#39;)">⚠️ Kỷ luật</div>
         </div>
 
         <div id="reward-tab" class="card">
@@ -851,8 +1289,8 @@ select.fi{cursor:pointer}
         <div class="card">
           <div class="ch">
             <span class="ct"><span class="ct-ico" style="background:var(--green-bg)">💸</span>Quản lý thu chi</span>
-            <button class="btn btn-p" onclick="openAddCashflow('income')">➕ Thu</button>
-            <button class="btn btn-orange" onclick="openAddCashflow('expense')">➖ Chi</button>
+            <button class="btn btn-p" onclick="openAddCashflow(&#39;income&#39;)">➕ Thu</button>
+            <button class="btn btn-orange" onclick="openAddCashflow(&#39;expense&#39;)">➖ Chi</button>
             <button class="btn btn-ghost" onclick="exportCashflowXLSX()">📥 Xuất Excel</button>
           </div>
           <div class="cb0">
@@ -879,7 +1317,7 @@ select.fi{cursor:pointer}
       <div id="invoices" class="page">
         <div class="card">
           <div class="ch">
-            <span class="ct"><span class="ct-ico" style="background:var(--purple-bg)">📋</span>Quản lý hóa đơn & chứng từ</span>
+            <span class="ct"><span class="ct-ico" style="background:var(--purple-bg)">📋</span>Quản lý hóa đơn &amp; chứng từ</span>
             <button class="btn btn-p" onclick="openAddInvoice()">➕ Thêm hóa đơn</button>
             <button class="btn btn-ghost" onclick="exportInvoicesXLSX()">📥 Xuất Excel</button>
           </div>
@@ -906,15 +1344,15 @@ select.fi{cursor:pointer}
       <!-- DEBTS PAGE -->
       <div id="debts" class="page">
         <div class="tabs">
-          <div class="tab on" onclick="showDebtTab('receivable')">💵 Phải thu</div>
-          <div class="tab" onclick="showDebtTab('payable')">💸 Phải trả</div>
+          <div class="tab on" onclick="showDebtTab(&#39;receivable&#39;)">💵 Phải thu</div>
+          <div class="tab" onclick="showDebtTab(&#39;payable&#39;)">💸 Phải trả</div>
         </div>
 
         <div id="receivable-tab" class="card">
           <div class="ch">
             <span class="ct"><span class="ct-ico" style="background:var(--green-bg)">💵</span>Công nợ phải thu</span>
-            <button class="btn btn-p" onclick="openAddDebt('receivable')">➕ Thêm</button>
-            <button class="btn btn-ghost" onclick="exportDebtsXLSX('receivable')">📥 Xuất Excel</button>
+            <button class="btn btn-p" onclick="openAddDebt(&#39;receivable&#39;)">➕ Thêm</button>
+            <button class="btn btn-ghost" onclick="exportDebtsXLSX(&#39;receivable&#39;)">📥 Xuất Excel</button>
           </div>
           <div class="cb0">
             <table class="t">
@@ -937,8 +1375,8 @@ select.fi{cursor:pointer}
         <div id="payable-tab" class="card" style="display:none">
           <div class="ch">
             <span class="ct"><span class="ct-ico" style="background:var(--orange-bg)">💸</span>Công nợ phải trả</span>
-            <button class="btn btn-p" onclick="openAddDebt('payable')">➕ Thêm</button>
-            <button class="btn btn-ghost" onclick="exportDebtsXLSX('payable')">📥 Xuất Excel</button>
+            <button class="btn btn-p" onclick="openAddDebt(&#39;payable&#39;)">➕ Thêm</button>
+            <button class="btn btn-ghost" onclick="exportDebtsXLSX(&#39;payable&#39;)">📥 Xuất Excel</button>
           </div>
           <div class="cb0">
             <table class="t">
@@ -989,9 +1427,9 @@ select.fi{cursor:pointer}
       <!-- FINANCIAL REPORT PAGE -->
       <div id="financial-report" class="page">
         <div class="tabs">
-          <div class="tab on" onclick="showFinTab('pl')">📊 Lãi/Lỗ</div>
-          <div class="tab" onclick="showFinTab('balance')">💼 Cân đối kế toán</div>
-          <div class="tab" onclick="showFinTab('cashflow')">💰 Dòng tiền</div>
+          <div class="tab on" onclick="showFinTab(&#39;pl&#39;)">📊 Lãi/Lỗ</div>
+          <div class="tab" onclick="showFinTab(&#39;balance&#39;)">💼 Cân đối kế toán</div>
+          <div class="tab" onclick="showFinTab(&#39;cashflow&#39;)">💰 Dòng tiền</div>
         </div>
 
         <div id="pl-tab" class="card">
@@ -1028,7 +1466,76 @@ select.fi{cursor:pointer}
           <div class="ch">
             <span class="ct"><span class="ct-ico" style="background:var(--orange-bg)">📑</span>Bảng thuế suất TNCN</span>
           </div>
-          <div class="cb" id="tax-table-content"></div>
+          <div class="cb" id="tax-table-content">
+    <div class="alert success" style="margin-bottom:14px">
+      ✅ Áp dụng theo <strong>Luật số 109/2025/QH15</strong> — Biểu thuế TNCN 5 bậc từ <strong>01/01/2026</strong>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px">
+      <div style="background:var(--blue-bg);border:1px solid var(--blue-mid);border-radius:var(--rl);padding:14px">
+        <div style="font-size:11px;font-weight:800;color:var(--blue);text-transform:uppercase;letter-spacing:.5px;margin-bottom:6px">👤 Giảm trừ bản thân</div>
+        <div style="font-size:22px;font-weight:900;color:var(--blue)">15.500.000 đ</div>
+        <div style="font-size:11px;color:var(--text2);margin-top:2px">mỗi tháng (tăng từ 11 triệu)</div>
+      </div>
+      <div style="background:var(--green-bg);border:1px solid var(--green-mid);border-radius:var(--rl);padding:14px">
+        <div style="font-size:11px;font-weight:800;color:var(--green);text-transform:uppercase;letter-spacing:.5px;margin-bottom:6px">👨‍👩‍👧 Người phụ thuộc</div>
+        <div style="font-size:22px;font-weight:900;color:var(--green)">6.200.000 đ</div>
+        <div style="font-size:11px;color:var(--text2);margin-top:2px">mỗi người/tháng (tăng từ 4,4 triệu)</div>
+      </div>
+    </div>
+    <table class="t">
+      <thead>
+        <tr>
+          <th style="text-align:center">Bậc</th>
+          <th>Thu nhập tính thuế/tháng</th>
+          <th style="text-align:center">Thuế suất</th>
+          <th style="text-align:center">Thuế tối đa/bậc</th>
+          <th style="text-align:center">Thuế lũy kế đến bậc trước</th>
+        </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td style="font-weight:800;text-align:center;font-size:15px;color:var(--blue)">1</td>
+        <td>0&nbsp;₫ — 10.000.000&nbsp;₫</td>
+        <td style="text-align:center"><span style="background:var(--blue-bg);color:var(--blue);padding:3px 10px;border-radius:8px;font-weight:800;font-size:13px">5%</span></td>
+        <td style="color:var(--text2);text-align:center">500.000&nbsp;₫/bậc</td>
+        <td style="color:var(--green);font-weight:700;text-align:center">0&nbsp;₫</td>
+      </tr>
+      <tr>
+        <td style="font-weight:800;text-align:center;font-size:15px;color:var(--blue)">2</td>
+        <td>10.000.000&nbsp;₫ — 30.000.000&nbsp;₫</td>
+        <td style="text-align:center"><span style="background:var(--blue-bg);color:var(--blue);padding:3px 10px;border-radius:8px;font-weight:800;font-size:13px">10%</span></td>
+        <td style="color:var(--text2);text-align:center">2.000.000&nbsp;₫/bậc</td>
+        <td style="color:var(--green);font-weight:700;text-align:center">500.000&nbsp;₫</td>
+      </tr>
+      <tr>
+        <td style="font-weight:800;text-align:center;font-size:15px;color:var(--blue)">3</td>
+        <td>30.000.000&nbsp;₫ — 60.000.000&nbsp;₫</td>
+        <td style="text-align:center"><span style="background:var(--blue-bg);color:var(--blue);padding:3px 10px;border-radius:8px;font-weight:800;font-size:13px">20%</span></td>
+        <td style="color:var(--text2);text-align:center">6.000.000&nbsp;₫/bậc</td>
+        <td style="color:var(--green);font-weight:700;text-align:center">2.500.000&nbsp;₫</td>
+      </tr>
+      <tr>
+        <td style="font-weight:800;text-align:center;font-size:15px;color:var(--blue)">4</td>
+        <td>60.000.000&nbsp;₫ — 100.000.000&nbsp;₫</td>
+        <td style="text-align:center"><span style="background:var(--blue-bg);color:var(--blue);padding:3px 10px;border-radius:8px;font-weight:800;font-size:13px">30%</span></td>
+        <td style="color:var(--text2);text-align:center">12.000.000&nbsp;₫/bậc</td>
+        <td style="color:var(--green);font-weight:700;text-align:center">8.500.000&nbsp;₫</td>
+      </tr>
+      <tr>
+        <td style="font-weight:800;text-align:center;font-size:15px;color:var(--blue)">5</td>
+        <td>Trên 100.000.000&nbsp;₫</td>
+        <td style="text-align:center"><span style="background:var(--blue-bg);color:var(--blue);padding:3px 10px;border-radius:8px;font-weight:800;font-size:13px">35%</span></td>
+        <td style="color:var(--text2);text-align:center">—/bậc</td>
+        <td style="color:var(--green);font-weight:700;text-align:center">20.500.000&nbsp;₫</td>
+      </tr></tbody>
+    </table>
+    <div class="alert info" style="margin-top:14px;margin-bottom:0">
+      <div>
+        <strong>Công thức tính nhanh:</strong> Thuế = Thuế lũy kế bậc trước + (Thu nhập tính thuế − Ngưỡng bậc) × Thuế suất<br>
+        <span style="font-size:12px;opacity:.85">Thu nhập tính thuế = Lương gross − BHXH (10.5%) − Giảm trừ gia cảnh − Giảm trừ người phụ thuộc</span>
+      </div>
+    </div>
+  </div>
         </div>
       </div>
 
@@ -1041,7 +1548,7 @@ select.fi{cursor:pointer}
   <div class="modal-box">
     <div class="modal-h">
       <span class="modal-title">Thông tin nhân viên</span>
-      <button class="modal-close" onclick="closeModal('emp-modal')">✕</button>
+      <button class="modal-close" onclick="closeModal(&#39;emp-modal&#39;)">✕</button>
     </div>
     <div class="modal-b">
       <div class="fg"><label class="fl">Mã NV</label><input type="text" class="fi" id="emp-id"></div>
@@ -1090,7 +1597,7 @@ select.fi{cursor:pointer}
       <div class="fg"><label class="fl">Ghi chú</label><textarea class="fi" id="emp-note"></textarea></div>
     </div>
     <div class="modal-f">
-      <button class="btn btn-ghost" onclick="closeModal('emp-modal')">Hủy</button>
+      <button class="btn btn-ghost" onclick="closeModal(&#39;emp-modal&#39;)">Hủy</button>
       <button class="btn btn-p" onclick="saveEmp()">💾 Lưu</button>
     </div>
   </div>
@@ -1101,12 +1608,12 @@ select.fi{cursor:pointer}
   <div class="modal-box">
     <div class="modal-h">
       <span class="modal-title">Thông tin hợp đồng</span>
-      <button class="modal-close" onclick="closeModal('contract-modal')">✕</button>
+      <button class="modal-close" onclick="closeModal(&#39;contract-modal&#39;)">✕</button>
     </div>
     <div class="modal-b">
       <div class="fg"><label class="fl">Mã hợp đồng</label><input type="text" class="fi" id="contract-id"></div>
       <div class="fg"><label class="fl">Nhân viên</label>
-        <select class="fi" id="contract-emp"></select>
+        <select class="fi" id="contract-emp"><option value="NV001">NV001 - Nguyễn Văn Minh</option><option value="NV002">NV002 - Trần Thị Lan</option><option value="NV003">NV003 - Lê Quang Hùng</option><option value="NV004">NV004 - Phạm Thị Hoa</option><option value="NV005">NV005 - Vũ Đức Thành</option><option value="NV006">NV006 - Ngô Thị Mai</option><option value="NV007">NV007 - Đặng Văn Tuấn</option><option value="NV008">NV008 - Bùi Thị Tuyết</option><option value="NV009">NV009 - Hoàng Minh Khoa</option><option value="NV010">NV010 - Trịnh Thu Hằng</option><option value="NV011">NV011 - Lý Văn Phước</option><option value="NV012">NV012 - Nguyễn Thị Dung</option></select>
       </div>
       <div class="fg"><label class="fl">Loại hợp đồng</label>
         <select class="fi" id="contract-type">
@@ -1134,7 +1641,7 @@ select.fi{cursor:pointer}
       <div class="fg"><label class="fl">Ghi chú</label><textarea class="fi" id="contract-note"></textarea></div>
     </div>
     <div class="modal-f">
-      <button class="btn btn-ghost" onclick="closeModal('contract-modal')">Hủy</button>
+      <button class="btn btn-ghost" onclick="closeModal(&#39;contract-modal&#39;)">Hủy</button>
       <button class="btn btn-p" onclick="saveContract()">💾 Lưu</button>
     </div>
   </div>
@@ -1145,11 +1652,11 @@ select.fi{cursor:pointer}
   <div class="modal-box">
     <div class="modal-h">
       <span class="modal-title">Lịch sử công tác</span>
-      <button class="modal-close" onclick="closeModal('history-modal')">✕</button>
+      <button class="modal-close" onclick="closeModal(&#39;history-modal&#39;)">✕</button>
     </div>
     <div class="modal-b">
       <div class="fg"><label class="fl">Nhân viên</label>
-        <select class="fi" id="history-emp"></select>
+        <select class="fi" id="history-emp"><option value="NV001">NV001 - Nguyễn Văn Minh</option><option value="NV002">NV002 - Trần Thị Lan</option><option value="NV003">NV003 - Lê Quang Hùng</option><option value="NV004">NV004 - Phạm Thị Hoa</option><option value="NV005">NV005 - Vũ Đức Thành</option><option value="NV006">NV006 - Ngô Thị Mai</option><option value="NV007">NV007 - Đặng Văn Tuấn</option><option value="NV008">NV008 - Bùi Thị Tuyết</option><option value="NV009">NV009 - Hoàng Minh Khoa</option><option value="NV010">NV010 - Trịnh Thu Hằng</option><option value="NV011">NV011 - Lý Văn Phước</option><option value="NV012">NV012 - Nguyễn Thị Dung</option></select>
       </div>
       <div class="fg"><label class="fl">Ngày</label><input type="date" class="fi" id="history-date"></div>
       <div class="fg"><label class="fl">Loại</label>
@@ -1168,7 +1675,7 @@ select.fi{cursor:pointer}
       <div class="fg"><label class="fl">Ghi chú</label><textarea class="fi" id="history-note"></textarea></div>
     </div>
     <div class="modal-f">
-      <button class="btn btn-ghost" onclick="closeModal('history-modal')">Hủy</button>
+      <button class="btn btn-ghost" onclick="closeModal(&#39;history-modal&#39;)">Hủy</button>
       <button class="btn btn-p" onclick="saveHistory()">💾 Lưu</button>
     </div>
   </div>
@@ -1179,11 +1686,11 @@ select.fi{cursor:pointer}
   <div class="modal-box">
     <div class="modal-h">
       <span class="modal-title">Đánh giá hiệu suất</span>
-      <button class="modal-close" onclick="closeModal('performance-modal')">✕</button>
+      <button class="modal-close" onclick="closeModal(&#39;performance-modal&#39;)">✕</button>
     </div>
     <div class="modal-b">
       <div class="fg"><label class="fl">Nhân viên</label>
-        <select class="fi" id="perf-emp"></select>
+        <select class="fi" id="perf-emp"><option value="NV001">NV001 - Nguyễn Văn Minh</option><option value="NV002">NV002 - Trần Thị Lan</option><option value="NV003">NV003 - Lê Quang Hùng</option><option value="NV004">NV004 - Phạm Thị Hoa</option><option value="NV005">NV005 - Vũ Đức Thành</option><option value="NV006">NV006 - Ngô Thị Mai</option><option value="NV007">NV007 - Đặng Văn Tuấn</option><option value="NV008">NV008 - Bùi Thị Tuyết</option><option value="NV009">NV009 - Hoàng Minh Khoa</option><option value="NV010">NV010 - Trịnh Thu Hằng</option><option value="NV011">NV011 - Lý Văn Phước</option><option value="NV012">NV012 - Nguyễn Thị Dung</option></select>
       </div>
       <div class="fg"><label class="fl">Kỳ đánh giá</label><input type="month" class="fi" id="perf-period"></div>
       <div class="fg"><label class="fl">Điểm KPI (0-100)</label><input type="number" class="fi" id="perf-score" min="0" max="100" value="0"></div>
@@ -1200,7 +1707,7 @@ select.fi{cursor:pointer}
       <div class="fg"><label class="fl">Ghi chú</label><textarea class="fi" id="perf-note"></textarea></div>
     </div>
     <div class="modal-f">
-      <button class="btn btn-ghost" onclick="closeModal('performance-modal')">Hủy</button>
+      <button class="btn btn-ghost" onclick="closeModal(&#39;performance-modal&#39;)">Hủy</button>
       <button class="btn btn-p" onclick="savePerformance()">💾 Lưu</button>
     </div>
   </div>
@@ -1211,11 +1718,11 @@ select.fi{cursor:pointer}
   <div class="modal-box">
     <div class="modal-h">
       <span class="modal-title" id="reward-modal-title">Khen thưởng</span>
-      <button class="modal-close" onclick="closeModal('reward-modal')">✕</button>
+      <button class="modal-close" onclick="closeModal(&#39;reward-modal&#39;)">✕</button>
     </div>
     <div class="modal-b">
       <div class="fg"><label class="fl">Nhân viên</label>
-        <select class="fi" id="reward-emp"></select>
+        <select class="fi" id="reward-emp"><option value="NV001">NV001 - Nguyễn Văn Minh</option><option value="NV002">NV002 - Trần Thị Lan</option><option value="NV003">NV003 - Lê Quang Hùng</option><option value="NV004">NV004 - Phạm Thị Hoa</option><option value="NV005">NV005 - Vũ Đức Thành</option><option value="NV006">NV006 - Ngô Thị Mai</option><option value="NV007">NV007 - Đặng Văn Tuấn</option><option value="NV008">NV008 - Bùi Thị Tuyết</option><option value="NV009">NV009 - Hoàng Minh Khoa</option><option value="NV010">NV010 - Trịnh Thu Hằng</option><option value="NV011">NV011 - Lý Văn Phước</option><option value="NV012">NV012 - Nguyễn Thị Dung</option></select>
       </div>
       <div class="fg"><label class="fl">Ngày</label><input type="date" class="fi" id="reward-date"></div>
       <div class="fg"><label class="fl">Loại</label><input type="text" class="fi" id="reward-type" placeholder="Thưởng tháng, hoàn thành dự án..."></div>
@@ -1223,7 +1730,7 @@ select.fi{cursor:pointer}
       <div class="fg"><label class="fl">Lý do</label><textarea class="fi" id="reward-reason"></textarea></div>
     </div>
     <div class="modal-f">
-      <button class="btn btn-ghost" onclick="closeModal('reward-modal')">Hủy</button>
+      <button class="btn btn-ghost" onclick="closeModal(&#39;reward-modal&#39;)">Hủy</button>
       <button class="btn btn-p" onclick="saveReward()">💾 Lưu</button>
     </div>
   </div>
@@ -1234,11 +1741,11 @@ select.fi{cursor:pointer}
   <div class="modal-box">
     <div class="modal-h">
       <span class="modal-title">Quản lý đào tạo</span>
-      <button class="modal-close" onclick="closeModal('training-modal')">✕</button>
+      <button class="modal-close" onclick="closeModal(&#39;training-modal&#39;)">✕</button>
     </div>
     <div class="modal-b">
       <div class="fg"><label class="fl">Nhân viên</label>
-        <select class="fi" id="training-emp"></select>
+        <select class="fi" id="training-emp"><option value="NV001">NV001 - Nguyễn Văn Minh</option><option value="NV002">NV002 - Trần Thị Lan</option><option value="NV003">NV003 - Lê Quang Hùng</option><option value="NV004">NV004 - Phạm Thị Hoa</option><option value="NV005">NV005 - Vũ Đức Thành</option><option value="NV006">NV006 - Ngô Thị Mai</option><option value="NV007">NV007 - Đặng Văn Tuấn</option><option value="NV008">NV008 - Bùi Thị Tuyết</option><option value="NV009">NV009 - Hoàng Minh Khoa</option><option value="NV010">NV010 - Trịnh Thu Hằng</option><option value="NV011">NV011 - Lý Văn Phước</option><option value="NV012">NV012 - Nguyễn Thị Dung</option></select>
       </div>
       <div class="fg"><label class="fl">Khóa học</label><input type="text" class="fi" id="training-course"></div>
       <div class="g2">
@@ -1257,7 +1764,7 @@ select.fi{cursor:pointer}
       <div class="fg"><label class="fl">Ghi chú</label><textarea class="fi" id="training-note"></textarea></div>
     </div>
     <div class="modal-f">
-      <button class="btn btn-ghost" onclick="closeModal('training-modal')">Hủy</button>
+      <button class="btn btn-ghost" onclick="closeModal(&#39;training-modal&#39;)">Hủy</button>
       <button class="btn btn-p" onclick="saveTraining()">💾 Lưu</button>
     </div>
   </div>
@@ -1268,7 +1775,7 @@ select.fi{cursor:pointer}
   <div class="modal-box">
     <div class="modal-h">
       <span class="modal-title" id="cashflow-modal-title">Thu chi</span>
-      <button class="modal-close" onclick="closeModal('cashflow-modal')">✕</button>
+      <button class="modal-close" onclick="closeModal(&#39;cashflow-modal&#39;)">✕</button>
     </div>
     <div class="modal-b">
       <div class="fg"><label class="fl">Ngày</label><input type="date" class="fi" id="cashflow-date"></div>
@@ -1287,7 +1794,7 @@ select.fi{cursor:pointer}
       <div class="fg"><label class="fl">Ghi chú</label><textarea class="fi" id="cashflow-note"></textarea></div>
     </div>
     <div class="modal-f">
-      <button class="btn btn-ghost" onclick="closeModal('cashflow-modal')">Hủy</button>
+      <button class="btn btn-ghost" onclick="closeModal(&#39;cashflow-modal&#39;)">Hủy</button>
       <button class="btn btn-p" onclick="saveCashflow()">💾 Lưu</button>
     </div>
   </div>
@@ -1298,7 +1805,7 @@ select.fi{cursor:pointer}
   <div class="modal-box">
     <div class="modal-h">
       <span class="modal-title">Hóa đơn/Chứng từ</span>
-      <button class="modal-close" onclick="closeModal('invoice-modal')">✕</button>
+      <button class="modal-close" onclick="closeModal(&#39;invoice-modal&#39;)">✕</button>
     </div>
     <div class="modal-b">
       <div class="fg"><label class="fl">Số hóa đơn</label><input type="text" class="fi" id="invoice-num"></div>
@@ -1333,7 +1840,7 @@ select.fi{cursor:pointer}
       <div class="fg"><label class="fl">Ghi chú</label><textarea class="fi" id="invoice-note"></textarea></div>
     </div>
     <div class="modal-f">
-      <button class="btn btn-ghost" onclick="closeModal('invoice-modal')">Hủy</button>
+      <button class="btn btn-ghost" onclick="closeModal(&#39;invoice-modal&#39;)">Hủy</button>
       <button class="btn btn-p" onclick="saveInvoice()">💾 Lưu</button>
     </div>
   </div>
@@ -1344,7 +1851,7 @@ select.fi{cursor:pointer}
   <div class="modal-box">
     <div class="modal-h">
       <span class="modal-title" id="debt-modal-title">Công nợ</span>
-      <button class="modal-close" onclick="closeModal('debt-modal')">✕</button>
+      <button class="modal-close" onclick="closeModal(&#39;debt-modal&#39;)">✕</button>
     </div>
     <div class="modal-b">
       <div class="fg"><label class="fl" id="debt-partner-label">Khách hàng</label><input type="text" class="fi" id="debt-partner"></div>
@@ -1362,7 +1869,7 @@ select.fi{cursor:pointer}
       <div class="fg"><label class="fl">Ghi chú</label><textarea class="fi" id="debt-note"></textarea></div>
     </div>
     <div class="modal-f">
-      <button class="btn btn-ghost" onclick="closeModal('debt-modal')">Hủy</button>
+      <button class="btn btn-ghost" onclick="closeModal(&#39;debt-modal&#39;)">Hủy</button>
       <button class="btn btn-p" onclick="saveDebt()">💾 Lưu</button>
     </div>
   </div>
@@ -1373,7 +1880,7 @@ select.fi{cursor:pointer}
   <div class="modal-box">
     <div class="modal-h">
       <span class="modal-title">Ngân sách</span>
-      <button class="modal-close" onclick="closeModal('budget-modal')">✕</button>
+      <button class="modal-close" onclick="closeModal(&#39;budget-modal&#39;)">✕</button>
     </div>
     <div class="modal-b">
       <div class="fg"><label class="fl">Danh mục</label><input type="text" class="fi" id="budget-category"></div>
@@ -1382,7 +1889,7 @@ select.fi{cursor:pointer}
       <div class="fg"><label class="fl">Ghi chú</label><textarea class="fi" id="budget-note"></textarea></div>
     </div>
     <div class="modal-f">
-      <button class="btn btn-ghost" onclick="closeModal('budget-modal')">Hủy</button>
+      <button class="btn btn-ghost" onclick="closeModal(&#39;budget-modal&#39;)">Hủy</button>
       <button class="btn btn-p" onclick="saveBudget()">💾 Lưu</button>
     </div>
   </div>
@@ -1498,14 +2005,16 @@ function loadData() {
             payables: d.payables || [],
             budgets: d.budgets || []
           };
-          // Chỉ dùng dữ liệu Sheets nếu có nhân viên
-          if (data.emps && data.emps.length > 0) {
+          // Chỉ dùng dữ liệu Sheets nếu local hoàn toàn trống
+          const localRaw = localStorage.getItem(STORAGE_KEY);
+          const localEmpty = !localRaw || localRaw === '{}';
+          if (localEmpty && data.emps && data.emps.length > 0) {
             applyData(data);
             localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
             renderEmpList(); updateEmpSelects();
             showSyncStatus('☁️ Đã đồng bộ', 'green');
           } else {
-            showSyncStatus('☁️ Dùng dữ liệu local', 'green');
+            showSyncStatus('☁️ Đã đồng bộ', 'green');
           }
         } else {
           showSyncStatus('⚠️ Dùng dữ liệu local', 'orange');
@@ -4105,12 +4614,12 @@ window.addEventListener('DOMContentLoaded', () => {
   <div class="modal-box" style="max-width:720px">
     <div class="modal-h">
       <span class="modal-title">👤 Hồ sơ nhân viên</span>
-      <button class="modal-close" onclick="closeModal('profile-modal')">✕</button>
+      <button class="modal-close" onclick="closeModal(&#39;profile-modal&#39;)">✕</button>
     </div>
     <div class="modal-b" id="profile-modal-body">
     </div>
     <div class="modal-f">
-      <button class="btn btn-ghost" onclick="closeModal('profile-modal')">Đóng</button>
+      <button class="btn btn-ghost" onclick="closeModal(&#39;profile-modal&#39;)">Đóng</button>
       <button class="btn btn-p" onclick="editEmpFromProfile()">✏️ Chỉnh sửa</button>
     </div>
   </div>
@@ -4121,7 +4630,7 @@ window.addEventListener('DOMContentLoaded', () => {
   <div class="modal-box" style="max-width:400px">
     <div class="modal-h">
       <span class="modal-title">Cập nhật trạng thái</span>
-      <button class="modal-close" onclick="closeModal('status-modal')">✕</button>
+      <button class="modal-close" onclick="closeModal(&#39;status-modal&#39;)">✕</button>
     </div>
     <div class="modal-b">
       <div class="fg"><label class="fl">Nhân viên</label><div id="status-emp-name" style="font-weight:700;padding:8px 0"></div></div>
@@ -4136,10 +4645,11 @@ window.addEventListener('DOMContentLoaded', () => {
       <div class="fg"><label class="fl">Lý do</label><textarea class="fi" id="status-reason" placeholder="Ghi chú lý do thay đổi..."></textarea></div>
     </div>
     <div class="modal-f">
-      <button class="btn btn-ghost" onclick="closeModal('status-modal')">Hủy</button>
+      <button class="btn btn-ghost" onclick="closeModal(&#39;status-modal&#39;)">Hủy</button>
       <button class="btn btn-p" onclick="saveStatusChange()">💾 Lưu thay đổi</button>
     </div>
   </div>
 </div>
-</body>
-</html>
+
+
+</body></html>
